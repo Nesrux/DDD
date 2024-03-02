@@ -26,4 +26,20 @@ describe("Customer unit test", () => {
     expect(customer.isActive()).toBe(true);
   });
 
+  it("should deactivate customer", () => {
+    const customer = new Customer("1", "Customer 1");
+   
+    customer.deactivate();
+
+    expect(customer.isActive()).toBe(false);
+  });
+
+  it("should throw error when address is undefined", () => {
+    expect(() =>{
+      const customer = new Customer("1", "Customer 1"); 
+      customer.activate();
+    }).toThrowError("Address is mandatory to activate a custumer");
+  });
+
+
 })
