@@ -10,14 +10,19 @@ export default class Customer {
   constructor(id: string, name: string) {
     this._id = id;
     this._name = name;
+    this.validate();
   }
 
+  get name(): string {
+    return this._name;
+  }
+  
   validate() {
-    if (this._id == "" || this._id.length < 1) {
-      throw new Error("Id é obrigatório");
+    if (this._id.length === 0) {
+      throw new Error("Id is required");
     }
-    if (this._name == "" || this._name.length < 1) {
-      throw new Error("Id é obrigatório");
+    if (this._name.length <= 0) {
+      throw new Error("Name is required");
     }
   }
   changeName(name: string) {
