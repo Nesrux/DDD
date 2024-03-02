@@ -1,3 +1,4 @@
+import Address from "../entity/Address";
 import Customer from "../entity/Customer";
 
 describe("Customer unit test", () => {
@@ -14,5 +15,15 @@ describe("Customer unit test", () => {
     customer.changeName("marcos")
     expect(customer.name).toBe("marcos")
   })
+
+  it("should activate customer", () => {
+    const customer = new Customer("1", "Customer 1");
+    const address = new Address("Street 1", 123, "13330-250", "São Paulo");
+    customer.Address = address;
+
+    customer.activate();
+
+    expect(customer.isActive()).toBe(true);
+  });
 
 })
