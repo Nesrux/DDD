@@ -11,6 +11,7 @@ export default class OrderItem {
     this._price = price;
     this._productId = productId;
     this._quantity = quantity;
+    this.validate();
   }
 
   get price(): number {
@@ -19,6 +20,14 @@ export default class OrderItem {
 
   get quantity(): number {
     return this._quantity;
+  }
+
+  validate(): boolean {
+    if (this.quantity <= 0) {
+      throw new Error("Quantity must be greater than 0")
+    }
+
+    return true;
   }
 
 
