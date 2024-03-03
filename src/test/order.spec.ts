@@ -22,12 +22,12 @@ describe("order unit test", () => {
     }).toThrowError("itens are required");
   })
   it("shold calculate total", () => {
-    const item = new OrderItem("1", "item1", 180, "p1", 2)
-    const item2 = new OrderItem("2", "item2", 80, "p2", 1)
-    const item3 = new OrderItem("3", "item3", 50, "p3", 4)
-    const totalPrice = item.price + item2.price + item3.price;
+    const items = [new OrderItem("1", "item1", 180, "p1", 2), new OrderItem("2", "item2", 80, "p2", 1),
+    new OrderItem("3", "item3", 50, "p3", 4)]
 
-    const order = new Order("a1", "b1", [item, item2, item3])
+    const totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
+
+    const order = new Order("a1", "b1", items)
     const total = order.total();
 
     expect(total).toBe(totalPrice)
