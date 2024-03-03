@@ -15,7 +15,7 @@ export default class Order {
   }
 
   total(): number {
-    return this._itens.reduce((acc, item) => acc + item._price, 0);
+    return this._itens.reduce((acc, item) => acc + item.price * item.quantity, 0);
   }
   validate(): boolean {
     if (this._id.length === 0) {
@@ -24,7 +24,7 @@ export default class Order {
     if (this._customerId.length === 0) {
       throw new Error("CustumerId is required")
     }
-    if(this._itens.length === 0){
+    if (this._itens.length === 0) {
       throw new Error("itens are required")
     }
     return true;
