@@ -1,5 +1,5 @@
-import Order from "../entity/Oder"
-import OrderItem from "../entity/Order_Item";
+import Order from "../../entity/Oder"
+import OrderItem from "../../entity/Order_Item";
 
 describe("order unit test", () => {
   it("shold throw error when id is empty", () => {

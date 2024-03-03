@@ -1,4 +1,4 @@
-import Product from "../entity/Product";
+import Product from "../../entity/Product";
 
 describe("Product unit test", () => {
   it("shold throw erro when id is blank", () => {
