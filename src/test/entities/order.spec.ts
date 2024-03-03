@@ -28,7 +28,7 @@ describe("order unit test", () => {
     const totalPrice = items.reduce((acc, item) => acc + item.price, 0)
 
     const order = new Order("a1", "b1", items)
-    const total = order.total();
+    const total = order.calculateTotal();
 
     expect(total).toBe(totalPrice)
 

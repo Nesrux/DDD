@@ -10,13 +10,18 @@ export default class Order {
     this._id = id;
     this._customerId = custumerId;
     this._itens = items
-    this._total = this.total();
+    this._total = this.calculateTotal();
     this.validate();
   }
 
-  total(): number {
+  get total(): number {
+    return this._total;
+  }
+
+  calculateTotal(): number {
     return this._itens.reduce((acc, item) => acc + item.price, 0);
   }
+
   validate(): boolean {
     if (this._id.length === 0) {
       throw new Error("Id is required")
