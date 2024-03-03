@@ -18,6 +18,10 @@ export default class Order {
     return this._total;
   }
 
+  get id(): string {
+    return this._id;
+  }
+
   calculateTotal(): number {
     return this._itens.reduce((acc, item) => acc + item.price, 0);
   }
