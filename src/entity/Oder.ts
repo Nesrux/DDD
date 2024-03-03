@@ -15,7 +15,7 @@ export default class Order {
   }
 
   total(): number {
-    return this._itens.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    return this._itens.reduce((acc, item) => acc + item.price, 0);
   }
   validate(): boolean {
     if (this._id.length === 0) {

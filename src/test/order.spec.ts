@@ -25,7 +25,8 @@ describe("order unit test", () => {
     const items = [new OrderItem("1", "item1", 180, "p1", 2), new OrderItem("2", "item2", 80, "p2", 1),
     new OrderItem("3", "item3", 50, "p3", 4)]
 
-    const totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
+
+    const totalPrice = items.reduce((acc, item) => acc + item.price, 0)
 
     const order = new Order("a1", "b1", items)
     const total = order.total();
