@@ -1,4 +1,5 @@
 import { Sequelize } from "sequelize-typescript"
+import ProductModel from "../db/sequelize/model/Product.model";
 
 describe("product repository test", () => {
   let sequileze: Sequelize;
@@ -10,9 +11,11 @@ describe("product repository test", () => {
       sync: { force: true }
     });
 
-    afterEach(async () => {
-      await sequileze.close();
-    })
-  })
+    sequileze.addModels([ProductModel]);
+    await sequileze.sync;
+  });
 
-})
+  afterEach(async () => {
+    await sequileze.close();
+  });
+});
