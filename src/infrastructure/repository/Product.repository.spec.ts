@@ -1,21 +1,22 @@
 import { Sequelize } from "sequelize-typescript"
 import ProductModel from "../db/sequelize/model/Product.model";
 
-describe("product repository test", () => {
+describe("Product repository test", () => {
   let sequileze: Sequelize;
+
   beforeEach(async () => {
     sequileze = new Sequelize({
-      dialect: 'sqlite',
-      storage: ':memory:',
+      dialect: "sqlite",
+      storage: ":memory:",
       logging: false,
-      sync: { force: true }
+      sync: { force: true },
     });
-
     sequileze.addModels([ProductModel]);
-    await sequileze.sync;
+    await sequileze.sync();
   });
 
   afterEach(async () => {
     await sequileze.close();
   });
-});
+
+})
