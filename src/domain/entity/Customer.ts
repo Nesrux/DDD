@@ -57,7 +57,12 @@ export default class Customer {
   addRewardPoints(points: number) {
     this._rewardPoints += points;
   }
+  changeAddress(address: Address) {
+    this.Address = address
+  }
+
 }
+
 /**
  * Uma entidade sempre deve se auto validar
  */
