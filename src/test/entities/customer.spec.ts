@@ -28,18 +28,28 @@ describe("Customer unit test", () => {
 
   it("should deactivate customer", () => {
     const customer = new Customer("1", "Customer 1");
-   
+
     customer.deactivate();
 
     expect(customer.isActive()).toBe(false);
   });
 
   it("should throw error when address is undefined", () => {
-    expect(() =>{
-      const customer = new Customer("1", "Customer 1"); 
+    expect(() => {
+      const customer = new Customer("1", "Customer 1");
       customer.activate();
     }).toThrowError("Address is mandatory to activate a custumer");
   });
+  it("shold add reward points", () => {
+    const customer = new Customer("1", "customer 1");
+    expect(customer.rewardPoints).toBe(0)
 
+    customer.addRewardPoints(20)
+    expect(customer.rewardPoints).toBe(20)
+
+    customer.addRewardPoints(20)
+    expect(customer.rewardPoints).toBe(40)
+
+  })
 
 })
