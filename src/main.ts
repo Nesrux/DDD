@@ -1,7 +1,7 @@
-import Address from "./entity/Address";
-import Customer from "./entity/Customer";
-import Order from "./entity/Oder";
-import OrderItem from "./entity/Order_Item";
+import Address from "./domain/entity/Address";
+import Customer from "./domain/entity/Customer";
+import Order from "./domain/entity/Oder";
+import OrderItem from "./domain/entity/Order_Item";
 
 // Customer aggregate
 let custumer = new Customer("123", "jaumm")
