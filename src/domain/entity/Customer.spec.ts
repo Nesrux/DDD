@@ -1,5 +1,5 @@
-import Address from "../../domain/entity/Address";
-import Customer from "../../domain/entity/Customer";
+import Address from "./Address";
+import Customer from "./Customer";
 
 describe("Customer unit test", () => {
 

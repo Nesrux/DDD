@@ -1,4 +1,4 @@
-import Product from "../../domain/entity/Product";
+import Product from "./Product";
 
 describe("Product unit test", () => {
   it("shold throw erro when id is blank", () => {
