@@ -3,27 +3,30 @@ import OrderItem from "./Order_Item";
 export default class Order {
   private _id: string;
   private _customerId: string;
-  private _itens: OrderItem[] = [];
+  private _items: OrderItem[] = [];
   private _total: number;
 
   constructor(id: string, custumerId: string, items: OrderItem[]) {
     this._id = id;
     this._customerId = custumerId;
-    this._itens = items
-    this._total = this.calculateTotal();
+    this._items = items
+    this._total = this.total();
     this.validate();
   }
 
-  get total(): number {
-    return this._total;
-  }
 
+  public get items(): OrderItem[] {
+    return this._items;
+  }
+  get customerId(): string {
+    return this._customerId;
+  }
   get id(): string {
     return this._id;
   }
 
-  calculateTotal(): number {
-    return this._itens.reduce((acc, item) => acc + item.price, 0);
+  total(): number {
+    return this._items.reduce((acc, item) => acc + item.price, 0);
   }
 
   validate(): boolean {
@@ -33,7 +36,7 @@ export default class Order {
     if (this._customerId.length === 0) {
       throw new Error("CustumerId is required")
     }
-    if (this._itens.length === 0) {
+    if (this._items.length === 0) {
       throw new Error("itens are required")
     }
     return true;
