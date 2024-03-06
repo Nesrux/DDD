@@ -1,10 +1,11 @@
 import ProductInteface from "./Product.inteface";
 
-export default class Product implements ProductInteface {
+export default class ProductB implements ProductInteface {
   private _id: string;
   private _name: string;
   private _price: number;
 
+  /**Essa classe é só para exemplo de criação de factories */
   constructor(id: string, name: string, price: number) {
     this._id = id;
     this._name = name;
@@ -20,7 +21,7 @@ export default class Product implements ProductInteface {
     return this._name;
   }
   get price(): number {
-    return this._price;
+    return this._price * 2;
   }
 
   validade(): boolean {
