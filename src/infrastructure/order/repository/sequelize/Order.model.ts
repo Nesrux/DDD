@@ -7,7 +7,7 @@ import {
   BelongsTo,
   HasMany,
 } from "sequelize-typescript";
-import CustomerModel from "./Customer.model";
+import CustomerModel from "../../../customer/repository/sequelize/Customer.model";
 import OrderItemModel from "./OrderItem.model";
 
 @Table({
