@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
-import Product from "../../entity/Product";
-import ProductInteface from "../../entity/Product.inteface";
-import ProductB from "../../entity/Product2";
+import Product from "../entity/Product";
+import ProductInteface from "../entity/Product.inteface";
+import ProductB from "../entity/Product2";
 export default class ProductFactory {
   public static create(type: string, name: string, price: number): ProductInteface {
 
