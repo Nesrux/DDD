@@ -16,7 +16,7 @@ export default class CustomerFactory {
 
   static createTestCustomer(): Customer {
 
-    const addres = new Address(fake.address.street(), fake.number.int(), "zip 123", fake.location.city())
+    const addres = new Address(fake.location.street(), fake.number.int(), "zip 123", fake.location.city())
     const customer = this.createWhitAddress(fake.person.fullName(), addres)
 
     return customer;
