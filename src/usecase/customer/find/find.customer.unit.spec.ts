@@ -3,8 +3,6 @@ import CustomerFactory from "../../../domain/customer/factory/customer.factory";
 import { Sequelize } from "sequelize-typescript";
 import CustomerModel from "../../../infrastructure/customer/repository/sequelize/Customer.model";
 import FindCustomerUseCase from "./find.customer.usecase";
-import Customer from "../../../domain/customer/entity/Customer";
-import Address from "../../../domain/customer/value-object/Address";
 
 describe("test find customer use case", () => {
   let sequelize: Sequelize;
