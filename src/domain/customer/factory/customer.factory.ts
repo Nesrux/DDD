@@ -1,5 +1,6 @@
 import Customer from "../entity/Customer";
 import { v4 as uuid } from "uuid";
+import { faker as fake } from '@faker-js/faker';
 import Address from "../value-object/Address";
 export default class CustomerFactory {
 
@@ -9,7 +10,15 @@ export default class CustomerFactory {
   static createWhitAddress(name: string, address: Address): Customer {
     const customer = this.create(name);
     customer.address = address
-  
+
+    return customer;
+  }
+
+  static createTestCustomer(): Customer {
+
+    const addres = new Address(fake.address.street(), fake.number.int(), "zip 123", fake.location.city())
+    const customer = this.createWhitAddress(fake.person.fullName(), addres)
+
     return customer;
   }
 
