@@ -1,4 +1,3 @@
-import CustomerRepository from "../../../infrastructure/customer/repository/sequelize/Customer.repository";
 import CreateCustomerUseCase from "./create.customer.usecase";
 
 const input = {
@@ -37,5 +36,23 @@ describe("unit Test create custumer use case", () => {
         city: input.address.city
       }
     })
+  })
+
+  it("should throw an error when name is missing", async () => {
+    const costumerRepository = MockRepository();
+    const customerCreateUseCase = new CreateCustomerUseCase(costumerRepository);
+
+    input.name = "";
+    await expect(customerCreateUseCase.execute(input)).rejects.toThrow("Name is required");
+
+  })
+
+  it("should throw an error when street is missing", async () => {
+    const costumerRepository = MockRepository();
+    const customerCreateUseCase = new CreateCustomerUseCase(costumerRepository);
+
+    input.address.street = "";
+    await expect(customerCreateUseCase.execute(input)).rejects.toThrow("Street is required");
+
   })
 })
