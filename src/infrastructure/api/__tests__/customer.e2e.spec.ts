@@ -11,7 +11,7 @@ describe("end to end test for customer", () => {
 
   it("should create a customer", async () => {
     const response = await request(app)
-      .post("/customers")
+      .post("/customer")
       .send({
         name: "cleiton",
         address: {
