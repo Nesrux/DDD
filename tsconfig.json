@@ -108,5 +108,5 @@
   }, 
   "include": [
     "src/**/*.ts"
-  ]
+, "src/usecase/customer/find/find.customer.unit.spec.ts"  ]
 }
