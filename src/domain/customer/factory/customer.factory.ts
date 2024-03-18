@@ -9,7 +9,7 @@ export default class CustomerFactory {
   }
   static createWhitAddress(name: string, address: Address): Customer {
     const customer = this.create(name);
-    customer.address = address
+    customer.changeAddress(address)
 
     return customer;
   }

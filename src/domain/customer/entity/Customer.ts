@@ -1,10 +1,9 @@
 import Entity from "../../@shared/entity/entity.abstract";
+import NotificationError from "../../@shared/notification/notification.error";
 import Address from "../value-object/Address";
 
-// Ctrl + T
 export default class Customer extends Entity {
-  private _id: string;
-  private _name: string;
+  private _name: string = "";
   private _address!: Address;
   private _active: boolean = false;
   private _rewardPoints: number = 0;
@@ -14,18 +13,9 @@ export default class Customer extends Entity {
     this._id = id;
     this._name = name;
     this.validate();
-
-    if (this.notification.hasErrors) {
-      throw new Error(this.notification.messages());
+    if (this.notification.hasErrors()) {
+      throw new NotificationError(this.notification.getErrors());
     }
-  }
-
-  get id(): string {
-    return this._id;
-  }
-
-  set address(address: Address) {
-    this._address = address;
   }
 
   get name(): string {
@@ -33,15 +23,7 @@ export default class Customer extends Entity {
   }
 
   get rewardPoints(): number {
-    return this._rewardPoints
-  }
-
-  get address(): Address {
-    return this._address;
-  }
-
-  isActive(): boolean {
-    return this._active;
+    return this._rewardPoints;
   }
 
   validate() {
@@ -58,16 +40,31 @@ export default class Customer extends Entity {
       })
     }
   }
+
   changeName(name: string) {
     this._name = name;
-    this.validate()
+    this.validate();
   }
+
+  get address(): Address {
+    return this._address;
+  }
+
+  changeAddress(address: Address) {
+    this._address = address;
+  }
+
+  isActive(): boolean {
+    return this._active;
+  }
+
   activate() {
     if (this._address === undefined) {
-      throw new Error("Address is mandatory to activate a custumer")
+      throw new Error("Address is mandatory to activate a customer");
     }
     this._active = true;
   }
+
   deactivate() {
     this._active = false;
   }
@@ -75,12 +72,8 @@ export default class Customer extends Entity {
   addRewardPoints(points: number) {
     this._rewardPoints += points;
   }
-  changeAddress(address: Address) {
-    this.address = address
+
+  set address(address: Address) {
+    this._address = address;
   }
-
 }
-
-/**
- * Uma entidade sempre deve se auto validar
- */

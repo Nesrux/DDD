@@ -6,7 +6,7 @@ import OrderItem from "./domain/checkout/entity/Order_Item";
 // Customer aggregate
 let custumer = new Customer("123", "jaumm")
 const addres = new Address("rua dois", 2, "123456789", "sao paulo");
-custumer.address = addres;
+custumer.changeAddress(addres);
 custumer.activate;
 
 // Order aggregate
