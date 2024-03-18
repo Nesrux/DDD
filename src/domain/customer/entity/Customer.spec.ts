@@ -38,7 +38,7 @@ describe("Customer unit test", () => {
     expect(() => {
       const customer = new Customer("1", "Customer 1");
       customer.activate();
-    }).toThrowError("Address is mandatory to activate a custumer");
+    }).toThrowError("Address is mandatory to activate a customer");
   });
   it("shold add reward points", () => {
     const customer = new Customer("1", "customer 1");
