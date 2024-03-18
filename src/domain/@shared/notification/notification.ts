@@ -20,4 +20,7 @@ export default class Notification {
     return message;
   }
 
+  hasErrors(): boolean {
+    return this.erros.length > 0
+  }
 }
