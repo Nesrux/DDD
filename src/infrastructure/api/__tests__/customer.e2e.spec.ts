@@ -35,6 +35,46 @@ describe("end to end test for customer", () => {
         name: "joão ninguém",
       });
     expect(response.status).toBe(500)
-
   });
+
+  it("should list all customer", async () => {
+    const response = await request(app)
+      .post("/customer")
+      .send({
+        name: "cleiton",
+        address: {
+          street: "street",
+          number: 123,
+          zip: "zip 123",
+          city: "city"
+        }
+      })
+    expect(response.status).toBe(200);
+
+    const response2 = await request(app)
+      .post("/customer")
+      .send({
+        name: "marcia",
+        address: {
+          street: "street 2",
+          number: 124,
+          zip: "zip 124",
+          city: "city foda"
+        }
+      })
+    expect(response2.status).toBe(200);
+
+    const listResponse = await request(app).get("/customer").send();
+
+    expect(listResponse.status).toBe(200);
+    expect(listResponse.body.customers.length).toBe(2);
+    
+    const customer1 = listResponse.body.customers[0];
+    expect(customer1.name).toBe("cleiton")
+    expect(customer1.address.street).toBe("street")
+    
+    const customer2 = listResponse.body.customers[1];
+    expect(customer2.name).toBe("marcia")
+    expect(customer2.address.street).toBe("street 2")
+  })
 })
