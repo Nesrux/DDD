@@ -26,9 +26,15 @@ describe("end to end test for customer", () => {
     expect(response.body.address.street).toBe("street");
     expect(response.body.address.number).toBe(123);
     expect(response.body.address.zip).toBe("zip 123");
-    expect(response.body.address.city).toBe("city")
-
-
-
+    expect(response.body.address.city).toBe("city");
   })
+  it("should not crate a customer", async () => {
+    const response = await request(app)
+      .post("/customer")
+      .send({
+        name: "joão ninguém",
+      });
+    expect(response.status).toBe(500)
+
+  });
 })
